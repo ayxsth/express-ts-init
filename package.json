@@ -1,0 +1,41 @@
+{
+  "name": "express-ts-init",
+  "author": "Aayush Shrestha",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start:dev": "nodemon",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "prettier": "prettier --write .",
+    "start": "npm build && node dist/index"
+  },
+  "dependencies": {
+    "axios": "^1.5.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "winston": "^3.10.0",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@total-typescript/ts-reset": "^0.4.2",
+    "@types/express": "^4.17.17",
+    "@types/lodash": "^4.14.198",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.1.6"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,json}": [
+      "npm run prettier",
+      "git add"
+    ]
+  }
+}
