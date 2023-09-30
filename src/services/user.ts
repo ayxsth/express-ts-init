@@ -1,32 +1,11 @@
-import NotFoundError from '@/errors/notFound';
-
 import { User } from '@/types/user';
 
-const users: User[] = [
-  {
-    id: 1,
-    name: 'John Doe',
-    email: 'johndoe@email.com'
-  },
-  {
-    id: 2,
-    name: 'Jane Doe',
-    email: 'janedoe@email.com'
-  },
-  {
-    id: 3,
-    name: 'Jack Doe',
-    email: 'jackdoe@email.com'
-  },
-  {
-    id: 4,
-    name: 'Jill Doe',
-    email: 'jilldoe@email.com'
-  }
-];
+import { users } from '@/constants/user';
+
+import NotFoundError from '@/errors/notFound';
 
 export const get = () => {
-  return new Promise((resolve) => {
+  return new Promise<User[]>((resolve) => {
     setTimeout(() => {
       resolve(users);
     }, 1000);
@@ -34,7 +13,7 @@ export const get = () => {
 };
 
 export const find = (id: number) => {
-  return new Promise((resolve) => {
+  return new Promise<User | undefined>((resolve) => {
     setTimeout(() => {
       const user = users.find((user) => user.id === id);
 
@@ -54,7 +33,7 @@ export const findOrFail = async (id: number) => {
 };
 
 export const findBy = (field: keyof User, value: string | number) => {
-  return new Promise((resolve) => {
+  return new Promise<User | undefined>((resolve) => {
     setTimeout(() => {
       const user = users.find((user) => user[field] === value);
 
